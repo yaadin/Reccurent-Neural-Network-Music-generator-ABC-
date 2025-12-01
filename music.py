@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import mitdeeplearning as mdl
 import numpy as np
 import os
 from tqdm import tqdm
@@ -94,7 +93,6 @@ def train_model():
     model = LSTMModel(vocab_size, params["embedding_dim"], params["hidden_size"]).to(device)
     optimizer = optim.Adam(model.parameters(), lr=params["learning_rate"])
     history = []
-    plotter = mdl.util.PeriodicPlotter(sec=2, xlabel='Iterations', ylabel='Loss')
     experiment = create_experiment()
 
     if hasattr(tqdm, "_instances"): tqdm._instances.clear()
@@ -111,7 +109,6 @@ def train_model():
         optimizer.step()
 
         history.append(loss.item())
-        plotter.plot(history)
         experiment.log_metric("loss", loss.item(), step=iter)
 
         if iter % 100 == 0:
