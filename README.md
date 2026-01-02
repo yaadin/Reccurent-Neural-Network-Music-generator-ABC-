@@ -21,9 +21,9 @@ A vocabulary of unique tokens is built for encoding and decoding.
 The architecture is a **character-level LSTM**:
 
 - **Embedding layer** maps tokens to dense vectors
-- 
+  
 - **LSTM layer** memory and sequence notation
-- 
+  
 - **Fully connected layer** outputs logits over the vocabulary
 
 # Training
